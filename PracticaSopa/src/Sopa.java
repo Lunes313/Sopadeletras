@@ -276,6 +276,7 @@ public class Sopa {
                 //se pregunta si la posición es null
                 if (sopa[i][j] == null) {
                     //si es null se agrega una letra aleatoria en la posición
+                    //logica buscada
                     sopa[i][j] = "" + (char) (Math.random() * 26 + 'a');
                 }
             }

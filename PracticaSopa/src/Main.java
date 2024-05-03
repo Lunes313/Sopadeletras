@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.Scanner;
-
+//fecha: 03/05/2024
+//Desarroladores: Laura Restrepo Berrio
+//Kadiha Nahir Muhamad Orta
 public class Main {
     //se crea un objeto de la clase Scanner statico para poder ser usado en todas las funciones
     static Scanner sc = new Scanner(System.in);
