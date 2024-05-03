@@ -21,7 +21,11 @@ public class Juego {
     }
 
     //metodos
-    //funcion para buscar las palabras d ela sopa usando el algoritmo de busqueda (DSF)
+    //funcion para buscar las palabras de la sopa usando el algoritmo de busqueda (DSF)
+    // algoritmo inspirado de:
+    // 1. https://www.apascualco.com/algoritmos/busqueda-en-profundidad-depth-first-search-dfs/
+    // 2. https://www.techiedelight.com/es/depth-first-search/
+
     public void buscarPalabras() {
         //recorre la lista de palabras que tiene la sopa
         for (String palabra : palabras) {
