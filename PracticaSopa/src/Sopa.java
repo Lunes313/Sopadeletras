@@ -276,7 +276,7 @@ public class Sopa {
                 //se pregunta si la posición es null
                 if (sopa[i][j] == null) {
                     //si es null se agrega una letra aleatoria en la posición
-                    //logica buscada
+                    //logica buscada en: https://www.techiedelight.com/es/generate-random-character-java/
                     sopa[i][j] = "" + (char) (Math.random() * 26 + 'a');
                 }
             }

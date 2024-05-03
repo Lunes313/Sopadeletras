@@ -231,7 +231,15 @@ public class Juego {
         }else{
             System.out.println("Tiempo restante: "+ tiempoRestante + " segundos");
         }
-        System.out.println("Palabras encontradas: "+ encontradas + " de " + palabras.size());
+        if(encontradas == palabras.size()){
+            System.out.println("Todas las palabras fueron encontradas");
+        }else{
+            System.out.println("Palabras encontradas: "+ encontradas + " de " + palabras.size());
+            System.out.println("Las palabras faltantes se encontraban en las posiciones:");
+            for(String posicion: posicionesP){
+                System.out.println(posicion);
+            }
+        }
         System.out.println("Errores:" + errores);
         System.out.println("Puntaje: "+ p);
     }
