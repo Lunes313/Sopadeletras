@@ -26,7 +26,7 @@ public class Main {
     }
     //función que permite personalizar la sopa de letras
     private static void crearsopaPersonalizada() {
-        System.out.println("Ingresa el tamaño de tu sopa de letras n*n: ");
+        System.out.println("Ingresa el tamaño de tu sopa de letras n: ");
         int tamano = sc.nextInt();
         System.out.println("¿Cuántas palabras deseas ingresar?");
         int cantidad = sc.nextInt();

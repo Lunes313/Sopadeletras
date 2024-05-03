@@ -189,12 +189,12 @@ public class Juego {
             //se imprime el tiempo restante
             System.out.println("Tiempo restante: "+ segundos[0] + " segundos");
             //se pide al usuario que ingrese la posicion inicial y final de la palabra
-            System.out.println("ingrese la posicion inicial de la palabra (fila, columna): ");
+            System.out.println("ingrese la posicion inicial de la palabra (fila columna): ");
             //se resta uno a la fila y columna que ingrese el usuario para que sea acorde a la matriz
             int fila = sc.nextInt()-1;
             int columna = sc.nextInt()-1;
             //se pide al usuario que ingrese la posicion final de la palabra
-            System.out.println("ingrese la posicion final de la palabra (fila, columna): ");
+            System.out.println("ingrese la posicion final de la palabra (fila columna): ");
             //se resta uno a la fila y columna que ingrese el usuario para que sea acorde a la matriz
             int fila2 = sc.nextInt()-1;
             int columna2 = sc.nextInt()-1;
