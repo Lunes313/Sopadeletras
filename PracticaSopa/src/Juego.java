@@ -188,60 +188,84 @@ public class Juego {
         //se inicializan las variables para contar las palabras encontradas y los errores
         int encontradas = 0;
         int errores = 0;
+        int fila = 0;
+        int columna = 0;
+        int fila2 = 0;
+        int columna2 = 0;
         //mientras el tiempo restante sea mayor a 0 y no se hayan encontrado todas las palabras
-        while(segundos[0] > 0 && encontradas < palabras.size()){
+        while(segundos[0] > 0 && encontradas < palabras.size() && errores < 10){
             //se imprime el tiempo restante
             System.out.println("Tiempo restante: "+ segundos[0] + " segundos");
             //se pide al usuario que ingrese la posicion inicial y final de la palabra
             System.out.println("ingrese la posicion inicial de la palabra (fila columna): ");
+            System.out.println("Si desea salir ingrese 0 0");
             //se resta uno a la fila y columna que ingrese el usuario para que sea acorde a la matriz
-            int fila = sc.nextInt()-1;
-            int columna = sc.nextInt()-1;
+            fila = sc.nextInt()-1;
+            columna = sc.nextInt()-1;
+            if(fila == -1 || columna == -1){
+                //si el usuario ingresa 0 0 se rompe el while
+                break;
+            }
             //se pide al usuario que ingrese la posicion final de la palabra
             System.out.println("ingrese la posicion final de la palabra (fila columna): ");
+            System.out.println("Si desea salir ingrese 0 0");
             //se resta uno a la fila y columna que ingrese el usuario para que sea acorde a la matriz
-            int fila2 = sc.nextInt()-1;
-            int columna2 = sc.nextInt()-1;
-            //se crea un string con la posicion inicial y final de la palabra
-            String posicionString = "(" + fila + ", " + columna + ") - (" + fila2 + ", " + columna2 + ")";
-            //si la lista de posiciones de las palabras contiene la posicion ingresada por el usuario
-            if(posicionesP.contains(posicionString)){
-                //se aumenta el contador de palabras encontradas
-                encontradas++;
-                //se imprime que se encontro la palabra
-                System.out.println("Encontraste una palabra");
-                //se elimina la posicion de la palabra encontrada de la lista de posiciones
-                posicionesP.remove(posicionString);
+            fila2 = sc.nextInt()-1;
+            columna2 = sc.nextInt()-1;
+            if(fila2 == -1 || columna2 == -1){
+                //si el usuario ingresa 0 0 se rompe el while
+                break;
+            }
+                //se crea un string con la posicion inicial y final de la palabra
+                String posicionString = "(" + fila + ", " + columna + ") - (" + fila2 + ", " + columna2 + ")";
+                //si la lista de posiciones de las palabras contiene la posicion ingresada por el usuario
+                if (posicionesP.contains(posicionString)) {
+                    //se aumenta el contador de palabras encontradas
+                    encontradas++;
+                    //se imprime que se encontro la palabra
+                    System.out.println("Encontraste una palabra");
+                    //se elimina la posicion de la palabra encontrada de la lista de posiciones
+                    posicionesP.remove(posicionString);
+                } else {
+                    //si la lista de posiciones de las palabras no contiene la posicion ingresada por el usuario se aumenta el contador de errores
+                    System.out.println("No encontrado, intenta de nuevo");
+                    errores++;
+                }
+
+        }
+
+        if(fila != -1 && columna != -1 && fila2 != -1 && columna2 != -1) {
+            if(errores <= 10) {
+                //se guarda el tiempo restante en una variable para poder utilizarlo si se encontraron todas las palabras y el tiempo no se acabo
+                int tiempoRestante = segundos[0];
+                //se crea una variable que contenga el puntaje del usuario
+                int p = puntaje(encontradas, errores, segundos);
+                //se cierra el scanner
+                sc.close();
+                //se imprime el tiempo restante, las palabras encontradas, los errores y el puntaje
+                if (tiempoRestante == 0) {
+                    System.out.println("Se acabó el tiempo");
+                } else {
+                    System.out.println("Tiempo restante: " + tiempoRestante + " segundos");
+                }
+                if (encontradas == palabras.size()) {
+                    System.out.println("Todas las palabras fueron encontradas");
+                } else {
+                    System.out.println("Palabras encontradas: " + encontradas + " de " + palabras.size());
+                    System.out.println("Las palabras faltantes se encontraban en las posiciones:");
+                    for (String posicion : posicionesP) {
+                        System.out.println(posicion);
+                    }
+                }
+                System.out.println("Errores:" + errores);
+                System.out.println("Puntaje: " + p);
             }else{
-                //si la lista de posiciones de las palabras no contiene la posicion ingresada por el usuario se aumenta el contador de errores
-                System.out.println("No encontrado, intenta de nuevo");
-                errores++;
+                System.out.println("Has superado la cantidad de errores permitidos");
+                System.out.println("Fin del juego");
             }
-            
-        }
-        //se guarda el tiempo restante en una variable para poder utilizarlo si se encontraron todas las palabras y el tiempo no se acabo
-        int tiempoRestante = segundos[0];
-        //se crea una variable que contenga el puntaje del usuario
-        int p = puntaje(encontradas, errores, segundos);
-        //se cierra el scanner
-        sc.close();
-        //se imprime el tiempo restante, las palabras encontradas, los errores y el puntaje
-        if(tiempoRestante == 0){
-            System.out.println("Se acabó el tiempo");
         }else{
-            System.out.println("Tiempo restante: "+ tiempoRestante + " segundos");
+            System.out.println("Fin del juego");
         }
-        if(encontradas == palabras.size()){
-            System.out.println("Todas las palabras fueron encontradas");
-        }else{
-            System.out.println("Palabras encontradas: "+ encontradas + " de " + palabras.size());
-            System.out.println("Las palabras faltantes se encontraban en las posiciones:");
-            for(String posicion: posicionesP){
-                System.out.println(posicion);
-            }
-        }
-        System.out.println("Errores:" + errores);
-        System.out.println("Puntaje: "+ p);
     }
 
     //funcion para calcular el puntaje del usuario
